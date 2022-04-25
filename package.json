@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "ts-node ",
+    "dev": "ts-node --files -r tsconfig-paths/register ./src/index.ts -g",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -4,13 +4,12 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:41:45
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-25 20:42:38
+ * @LastEditTime: 2022-04-26 00:17:16
  */
 import { list } from "./api/index";
 import { http, setCookie } from '../utils/http'
 import { getConfig } from '../utils/config'
 import { clg } from '../utils/console'
-
 
 
 const login = (): Promise<void> => {
@@ -44,17 +43,5 @@ const login = (): Promise<void> => {
     })
 }
 
-const getCatMenu =() => {
 
-}
-
-const getGroupList = async() => {
-    const res = await http.get(list.getGroupList, {})
-    console.log('res', res.data);
-}
-
-const init = async() => {
-    await login()
-    getGroupList()
-}
-init()
+export { login }

@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-25 20:20:35
+ * @LastEditTime: 2022-04-26 00:11:39
  */
 module.exports = {
     // 账号
@@ -19,13 +19,10 @@ module.exports = {
     outDir: './src/apis',
     // 项目跟请求方法映射
     projectMapping: {
-      101: {
+      63: {
         exportName: 'marketApi',
         // 返回报文泛式
         wrapper: '{ code: string, message: string, data: T }',
-      },
-      102: {
-        exportName: 'wechatApi',
       },
     },
     // 请求体实例文件路径

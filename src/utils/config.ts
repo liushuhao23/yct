@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-25 19:55:51
+ * @LastEditTime: 2022-04-26 00:16:26
  */
 import path from 'path'
 import fs from 'fs'
@@ -18,8 +18,8 @@ console.log(configPath(), 'configRootPath')
 
 /**
  * @description 获取配置文件路径
- * @author Wynne
- * @date 2021-07-02
+ * @author liushuhao
+ * @date
  */
 function configPath () {
   return path.resolve(configRootPath, './yct.config.js')
@@ -27,8 +27,8 @@ function configPath () {
 
 /**
  * @description 获取配置
- * @author Wynne
- * @date 2021-07-02
+ * @author liushuhao
+ * @date
  * @export
  * @return {*}
  */
@@ -64,8 +64,8 @@ export function getConfig (): IConfig {
 
 /**
  * @description 是否存在配置
- * @author Wynne
- * @date 2021-06-25
+ * @author liushuhao
+ * @date
  */
 export const existConfig = (): boolean => {
   return fs.existsSync(configPath())
@@ -73,8 +73,8 @@ export const existConfig = (): boolean => {
 
 /**
  * @description 初始化默认配置
- * @author Wynne
- * @date 2021-06-25
+ * @author liushuhao
+ * @date
  */
 export const initConfig = async (): Promise<void> => {
   if (existConfig()) {
@@ -95,8 +95,8 @@ export const initConfig = async (): Promise<void> => {
 
 /**
  * @description 生成默认配置
- * @author Wynne
- * @date 2021-06-25
+ * @author liushuhao
+ * @date
  */
 export const generateDefaultConfig = (): void => {
   const originPath = path.resolve(__dirname, '../templates/configTemplate/ygt.config.js')

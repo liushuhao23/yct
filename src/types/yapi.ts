@@ -120,4 +120,10 @@ export interface IProjectResponse {
     upTime: number,
     id: number,
   }
+
+  export interface ResInfo<T> {
+    errcode: number,
+    errmsg: string,
+    data: T
+  }
   

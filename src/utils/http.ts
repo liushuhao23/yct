@@ -3,8 +3,8 @@ import { getConfig } from './config'
 
 /**
  * @description 初始化请求default，防止修改config文件目录
- * @author Wynne
- * @date 2021-07-02
+ * @author liushuhao
+ * @date
  * @export
  */
 export function initAxios (): void {
@@ -14,8 +14,8 @@ export function initAxios (): void {
 
 /**
  * @description 设置cookie
- * @author Wynne
- * @date 2021-06-25
+ * @author liushuhao
+ * @date
  * @export
  * @param cookie
  */
