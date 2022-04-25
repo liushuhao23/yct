@@ -1,0 +1,38 @@
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: liushuhao
+ * @Date: 2022-04-25 19:43:03
+ * @LastEditors: liushuhao
+ * @LastEditTime: 2022-04-25 20:20:35
+ */
+module.exports = {
+    // 账号
+    account: 'liushuhao@cbim.com.cn',
+    // 密码
+    password: '1q2w3e4r',
+    // Yapi网址链接
+    originUrl: 'http://api.chunkding.com',
+    // 请求声明模块
+    fetchModule: 'import { AxiosPromise as RequestPromise , AxiosRequestConfig as RequestConfig } from "axios";',
+    // 输出目录
+    outDir: './src/apis',
+    // 项目跟请求方法映射
+    projectMapping: {
+      101: {
+        exportName: 'marketApi',
+        // 返回报文泛式
+        wrapper: '{ code: string, message: string, data: T }',
+      },
+      102: {
+        exportName: 'wechatApi',
+      },
+    },
+    // 请求体实例文件路径
+    requestFilePath: 'src/utils/http',
+    // 忽略ts校验
+    tsIgnore: true,
+    // 忽略eslint
+    esLintIgnore: true
+  };
+  
