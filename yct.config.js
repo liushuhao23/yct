@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 00:11:39
+ * @LastEditTime: 2022-04-27 00:35:33
  */
 module.exports = {
     // 账号
@@ -30,6 +30,7 @@ module.exports = {
     // 忽略ts校验
     tsIgnore: true,
     // 忽略eslint
-    esLintIgnore: true
+    esLintIgnore: true,
+    maxLength: 252
   };
   

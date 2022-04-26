@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 23:59:58
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 00:14:56
+ * @LastEditTime: 2022-04-26 23:46:06
  */
 import { http } from '../utils/http'
 import inquirer, { QuestionCollection } from 'inquirer'
@@ -17,7 +17,7 @@ import { getConfig } from '../utils/config'
  * @author liushuhao
  * @date 
  * @export
- * @param groupId
+ * @param groupId: number
  * @return {*}
  */
 export async function getProjectList (groupId: number): Promise<IListItem[]> {
@@ -53,7 +53,7 @@ export async function getProjectList (groupId: number): Promise<IListItem[]> {
  * @author liushuhao
  * @date
  * @export
- * @param groupId
+ * @param groupId: number
  * @return {*}
  */
 export async function getProjectId (groupId: number): Promise<IProjectResponse> {

@@ -4,14 +4,19 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:41:45
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 00:17:16
+ * @LastEditTime: 2022-04-27 00:10:45
  */
-import { list } from "./api/index";
+import { list } from "./api/index"
 import { http, setCookie } from '../utils/http'
 import { getConfig } from '../utils/config'
 import { clg } from '../utils/console'
 
-
+/**
+ * @description:  yapi 登录
+ * @param {*} Promise
+ * @return {*}
+ * @author: liushuhao
+ */
 const login = (): Promise<void> => {
     const config = getConfig()
     return new Promise((resolve, reject) => {
