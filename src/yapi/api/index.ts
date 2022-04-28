@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:45:37
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 23:21:18
+ * @LastEditTime: 2022-04-28 10:20:01
  */
 const list = {
     login: '/api/user/login',
@@ -12,7 +12,8 @@ const list = {
     getGroupList: '/api/group/list',
     getProjectList: '/api/project/list',
     getListMenu: '/api/interface/list_menu',
-    getListCat: '/api/interface/list_cat'
+    getListCat: '/api/interface/list_cat',
+    getInterface: '/api/interface/get'
 }
 
 export { list }

@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-26 23:21:53
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-27 00:24:56
+ * @LastEditTime: 2022-04-28 10:07:23
  */
 import { IListItem, IModularLiatResponse, catReturnResponse } from '../types/yapi'
 import { http } from '../utils/http'
@@ -60,13 +60,18 @@ export async function getCatId(catid: number): Promise<any | string> {
     return new Promise(async (resolve) => {
         const res = await getCatList(catid)
         const promptList: QuestionCollection = [{
-            type: 'list',
+            type: 'checkbox',
             message: '请选择要生成的接口:',
-            name: 'modularNames',
+            name: 'catNames',
             choices: res.map(e => e.name),
             pageSize: 20
         }]
-        const { modularNames } = await inquirer.prompt(promptList)
-
+        const { catNames } = await inquirer.prompt(promptList)
+        const checkedData: Array<IListItemCat> = res.filter(e => catNames.includes(e.name))
+        if (checkedData.length === 0) {
+            throw new Error('选择的接口有不存在接口')
+          }
+        resolve(checkedData)
+        // console.log(checkedData, 'modularNames')
     })
 }

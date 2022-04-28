@@ -13,6 +13,7 @@
     "axios": "^0.26.1",
     "commander": "^9.2.0",
     "inquirer": "^8.2.2",
+    "quicktype-core": "^6.0.71",
     "single-line-log": "^1.1.2"
   },
   "devDependencies": {
