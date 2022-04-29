@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 23:29:39
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-28 11:17:18
+ * @LastEditTime: 2022-04-29 11:13:31
  */
 import { http } from '../utils/http';
 import { IListItem } from '../types/yapi';
@@ -15,13 +15,20 @@ interface IListItemCat extends IListItem {
   catid: number;
   project_id: number;
 }
+
+type InfoReturn = {
+  [key in string]: {
+    res_body: string,
+    req_body_other: string
+  }
+}
 /**
  * @description: 获取接口info schema
  * @param {*}
  * @return {*}
  * @author: liushuhao
  */
-const getInterceList = async (idList: Array<IListItemCat>) => {
+const getInterceList = async (idList: Array<IListItemCat>): Promise<InfoReturn>  => {
   return new Promise((resolve) => {
     const jsonSchemaData: {
       [key in string]: {
