@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 00:16:26
+ * @LastEditTime: 2022-04-29 21:27:57
  */
 import path from 'path'
 import fs from 'fs'
@@ -52,13 +52,10 @@ export function getConfig (): IConfig {
 //   if (!config.fetchModule) {
 //     throw new Error('请配置Yapi请求声明模块')
 //   }
-//   if (!config.projectMapping) {
-//     throw new Error('请配置Yapi项目映射')
-//   }
-//   if (!config.requestFilePath) {
-//     throw new Error('请配置axios请求方法文件路径')
-//   }
-  config.outDir = path.resolve(configRootPath, config.outDir)
+  if (!config.projectMapping) {
+    throw new Error('请配置Yapi项目映射')
+  }
+  // config.outDir = path.resolve(configRootPath, config.outDir)
   return config
 }
 

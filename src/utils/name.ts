@@ -56,8 +56,8 @@ export function zhCN2EN(text: string): Promise<string> {
  * @param [isBigHump=true]
  * @return {*}
  */
-export function pathToHump(api: IApiInfoResponse, isBigHump = true): string {
-    let name = api.path.replace(/[{|}]/g, '').replace(/\//g, '_')
+export function pathToHump(api: Partial<IApiInfoResponse>, isBigHump = true): string {
+    let name = (api.path as string).replace(/[{|}]/g, '').replace(/\//g, '_')
     name = underlineToHump(name, isBigHump)
     return name
 }
@@ -160,7 +160,14 @@ export function getResponesPath(namespace: string, api: IApiInfoResponse): strin
  * @param api
  * @return {*}
  */
-export function getInterfaceName(api: IApiInfoResponse): string {
-    const name = pathToHump(api)
-    return `${api.method.toLocaleLowerCase()}${name}`
+export function getInterfaceName(path: string): string {
+    const newPath = `api${path}`
+    let pathName = ''
+    newPath.split('/').forEach((item)=> {
+        pathName += item 
+    })
+    const name = pathToHump({
+        path: newPath
+    })
+    return `${name}`
 }

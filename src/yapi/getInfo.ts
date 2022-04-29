@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 23:29:39
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-29 11:13:31
+ * @LastEditTime: 2022-04-29 21:45:37
  */
 import { http } from '../utils/http';
 import { IListItem } from '../types/yapi';
@@ -19,7 +19,8 @@ interface IListItemCat extends IListItem {
 type InfoReturn = {
   [key in string]: {
     res_body: string,
-    req_body_other: string
+    req_body_other: string,
+    path: string,
   }
 }
 /**
@@ -34,6 +35,7 @@ const getInterceList = async (idList: Array<IListItemCat>): Promise<InfoReturn> 
       [key in string]: {
         res_body: string;
         req_body_other: string;
+        path: string
       };
     } = {};
     const promises: Array<Promise<any>> = [];
@@ -55,6 +57,7 @@ const getInterceList = async (idList: Array<IListItemCat>): Promise<InfoReturn> 
             jsonSchemaData[item.value.data.data.path] = {
               res_body: item.value.data.data.res_body,
               req_body_other: item.value.data.data.req_body_other,
+              path: item.value.data.data.path
             };
           }
         }

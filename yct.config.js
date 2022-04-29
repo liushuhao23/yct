@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-27 00:35:33
+ * @LastEditTime: 2022-04-29 21:28:23
  */
 module.exports = {
     // 账号
@@ -16,7 +16,7 @@ module.exports = {
     // 请求声明模块
     fetchModule: 'import { AxiosPromise as RequestPromise , AxiosRequestConfig as RequestConfig } from "axios";',
     // 输出目录
-    outDir: './src/apis',
+    outDir: '/src/apis',
     // 项目跟请求方法映射
     projectMapping: {
       63: {
@@ -25,8 +25,6 @@ module.exports = {
         wrapper: '{ code: string, message: string, data: T }',
       },
     },
-    // 请求体实例文件路径
-    requestFilePath: 'src/utils/http',
     // 忽略ts校验
     tsIgnore: true,
     // 忽略eslint
