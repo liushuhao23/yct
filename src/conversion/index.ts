@@ -4,16 +4,22 @@
  * @Autor: liushuhao
  * @Date: 2022-04-28 11:12:24
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-29 22:42:53
+ * @LastEditTime: 2022-05-01 00:49:50
  */
 import { IListItem } from '../types/yapi';
 import { getInterceList } from '../yapi/getInfo';
-const fs = require('fs-extra');
 import { getConfig } from '../utils/config';
 import { getInterfaceName } from '../utils/name';
-
-
-
+import { stdout } from 'single-line-log'
+import { Progress } from '../utils/progress'
+const fs = require('fs-extra');
+import { clg } from '../utils/console'
+type InfoReturn = {
+  res_body: string,
+  req_body_other: string,
+  path: string,
+  project_id: number
+}
 const {
   quicktype,
   InputData,
@@ -27,39 +33,58 @@ interface IListItemCat extends IListItem {
   catid: number;
   project_id: number;
 }
-const tempJsonSchema = async (idLists: IListItemCat[]) => {
+const tempJsonSchema = async (idLists: IListItemCat[], projectName: string) => {
   const config = getConfig();
+  let index = 0
+  clg('yellow', '> 开始生成接口文件，请等待')
   const res = await getInterceList(idLists);
-  Object.keys(res).forEach(async (item, index) => {
-    const name =  getInterfaceName(res[item].path)
-    // console.log('输出',  name)
+  const length = Object.keys(res).length
+  const progress = new Progress('> yapi接口信息拉取', length)
+
+  for (const key in res) {
+    if (Object.prototype.hasOwnProperty.call(res, key)) {
+      await generate(res[key], config,projectName )
+      index++
+      progress.push(index)
+    }
+  }
+  clg('yellow', '> 生成接口文件已完成')
+};
+
+const generate = async(item: InfoReturn, config: { outDir: any; }, projectName: string) => {
+  const name = getInterfaceName(item.path)
+  const path = process.cwd();
+  if (item.res_body) {
     const { lines: body } = await quicktypeJSONSchema(
       'typescript',
       `${name}_body`,
-      res[item].res_body
+      item.res_body
     );
+    try {
+      await fs.outputFile(
+        `${path}/${config.outDir}/${projectName}/${name}/body.ts`,
+        body.join('\n')
+      );
+    } catch (err: any) {
+      throw new Error(err)
+    }
+  }
+  if (item.req_body_other) {
     const { lines: body_other } = await quicktypeJSONSchema(
       'typescript',
       `${name}return`,
-      res[item].req_body_other
+      item.req_body_other
     );
-    const path = process.cwd();
-    fs.outputFile(
-      `${path}/${config.outDir}/${name}/body.ts`,
-      body.join('\n'),
-      (err: any) => {
-        // throw new Error(err);
-      }
-    );
-    fs.outputFile(
-      `${path}/${config.outDir}/${name}/return.ts`,
-      body_other.join('\n'),
-      (err: any) => {
-        // throw new Error(err);
-      }
-    );
-  });
-};
+    try {
+      await fs.outputFile(
+        `${path}/${config.outDir}/${projectName}/${name}/return.ts`,
+        body_other.join('\n'),
+      );
+    } catch (err: any) {
+      throw new Error(err)
+    }
+  }
+}
 
 const quicktypeJSONSchema = async (
   targetLanguage: string,
@@ -82,5 +107,13 @@ const quicktypeJSONSchema = async (
     rendererOptions: { 'just-types': 'true' },
   });
 };
+
+
+const percentage = (num: number, total: number) => {
+  if (num == 0 || total == 0) {
+    return 0;
+  }
+  return (Math.round(num / total * 10000) / 100.00);// 小数点后两位百分比
+}
 
 export { tempJsonSchema };

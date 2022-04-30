@@ -161,7 +161,7 @@ export function getResponesPath(namespace: string, api: IApiInfoResponse): strin
  * @return {*}
  */
 export function getInterfaceName(path: string): string {
-    const newPath = `api${path}`
+    const newPath = `${path}`
     let pathName = ''
     newPath.split('/').forEach((item)=> {
         pathName += item 

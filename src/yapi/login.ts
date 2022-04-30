@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:41:45
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-27 00:10:45
+ * @LastEditTime: 2022-05-01 00:34:57
  */
 import { list } from "./api/index"
 import { http, setCookie } from '../utils/http'
@@ -39,7 +39,7 @@ const login = (): Promise<void> => {
                 clg('yellow', '> yapi登录成功')
                 resolve()
             } else {
-                clg('yellow', '> yapi登录失败：', res.data.errmsg)
+                clg('red', '> yapi登录失败：', res.data.errmsg)
                 reject('yapi登录失败: ' + res.data.errmsg)
             }
         }).catch(err => {

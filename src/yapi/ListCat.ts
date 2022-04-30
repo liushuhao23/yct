@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-26 23:21:53
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-28 10:07:23
+ * @LastEditTime: 2022-04-30 21:29:40
  */
 import { IListItem, IModularLiatResponse, catReturnResponse } from '../types/yapi'
 import { http } from '../utils/http'
@@ -72,6 +72,5 @@ export async function getCatId(catid: number): Promise<any | string> {
             throw new Error('选择的接口有不存在接口')
           }
         resolve(checkedData)
-        // console.log(checkedData, 'modularNames')
     })
 }

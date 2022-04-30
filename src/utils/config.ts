@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-29 21:27:57
+ * @LastEditTime: 2022-04-30 21:29:24
  */
 import path from 'path'
 import fs from 'fs'
@@ -14,7 +14,6 @@ import { clg } from './console'
 
 let configRootPath = process.cwd()
 
-console.log(configPath(), 'configRootPath')
 
 /**
  * @description 获取配置文件路径

@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-29 21:28:23
+ * @LastEditTime: 2022-04-30 20:34:25
  */
 module.exports = {
     // 账号
@@ -24,6 +24,10 @@ module.exports = {
         // 返回报文泛式
         wrapper: '{ code: string, message: string, data: T }',
       },
+      59: {
+        exportName: 'marketApi',
+        wrapper: '{ code: string, message: string, data: T }',
+      }
     },
     // 忽略ts校验
     tsIgnore: true,
