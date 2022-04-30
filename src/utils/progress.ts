@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: liushuhao
+ * @Date: 2022-04-30 23:46:44
+ * @LastEditors: liushuhao
+ * @LastEditTime: 2022-05-01 00:50:50
+ */
 // 这里用到一个很实用的 npm 模块，用在同一行打印文本
 import { stdout } from 'single-line-log'
 let taskList: IProgress[] = []
@@ -30,7 +38,6 @@ function formatCmdText (data: IProgress) {
 export class Progress {
   private title: string;
   private total: number;
-  private cb?: () => void;
   constructor (title: string, total: number, cb?: () => void) {
     taskList.push({
       title,
@@ -40,7 +47,6 @@ export class Progress {
     })
     this.title = title
     this.total = total
-    this.cb = cb
     this.push(0)
   }
 
@@ -51,9 +57,6 @@ export class Progress {
     const cmdText = taskList.map(e => formatCmdText(e)).join('')
     // 在单行输出文本
     stdout(cmdText)
-    if (curr >= this.total) {
-      this.cb && this.cb()
-    }
   }
 
   clear (): void {

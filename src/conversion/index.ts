@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-28 11:12:24
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-01 00:49:50
+ * @LastEditTime: 2022-05-01 00:51:49
  */
 import { IListItem } from '../types/yapi';
 import { getInterceList } from '../yapi/getInfo';
@@ -36,10 +36,9 @@ interface IListItemCat extends IListItem {
 const tempJsonSchema = async (idLists: IListItemCat[], projectName: string) => {
   const config = getConfig();
   let index = 0
-  clg('yellow', '> 开始生成接口文件，请等待')
   const res = await getInterceList(idLists);
   const length = Object.keys(res).length
-  const progress = new Progress('> yapi接口信息拉取', length)
+  const progress = new Progress('> 开始生成接口文件，进度: ', length)
 
   for (const key in res) {
     if (Object.prototype.hasOwnProperty.call(res, key)) {
