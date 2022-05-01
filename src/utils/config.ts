@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-30 21:29:24
+ * @LastEditTime: 2022-05-01 21:30:11
  */
 import path from 'path'
 import fs from 'fs'
@@ -21,7 +21,7 @@ let configRootPath = process.cwd()
  * @date
  */
 function configPath () {
-  return path.resolve(configRootPath, './yct.config.js')
+  return path.resolve(configRootPath, '/yct.config.js')
 }
 
 /**

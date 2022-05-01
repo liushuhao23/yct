@@ -1,34 +1,21 @@
-/*
- * @Description: 
- * @Version: 2.0
- * @Autor: liushuhao
- * @Date: 2022-04-25 17:03:47
- * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-01 00:31:05
- */
-import { login } from './yapi/login'
-import { getGroupId } from './yapi/group'
-import { getProjectId } from './yapi/project'
-import { getModular } from './yapi/listMenu'
-import { getCatList, getCatId } from './yapi/ListCat'
-import { tempJsonSchema } from './conversion/index'
-import { clg } from './utils/console'
+#!/usr/bin/env node
+import pkg from '../package.json'
+import { program } from 'commander'
+import { initConfig } from './utils/config'
+import { init } from './start'
 
-const init = async () => {
-    await login()
-    const groupId = await getGroupId()
-    // clg('yellow', groupId, '选择的分组ID')
-    const { projectId, projectName } = await getProjectId(groupId)
-    // clg('yellow', projectId, '选择的项目ID', projectName, '选择的项目名称')
-    const modulars = await getModular(projectId)
+// 配置执行参数
+program
+  .version(pkg.version, '-v, --version', '获取当前版本')
+  .option('-i, --init', '初始化配置文件')
+  .option('-g, --generate', '生成接口文档')
 
-    let checkedInterfaceList = []
-    if(modulars[0].type === 'continue') {
-        checkedInterfaceList = await getCatId(modulars[0].modularId)
-    } else if (modulars[0].type === 'all')  {
-        checkedInterfaceList= await getCatList(modulars[0].modularId)
-    }
-    tempJsonSchema(checkedInterfaceList, projectName)
-    // clg('yellow',modulars)
-}
-init()
+program.on('option:init', () => {
+  initConfig()
+})
+
+program.on('option:generate', () => {
+    init()
+})
+
+program.parse(process.argv)
