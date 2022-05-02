@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-05-01 16:00:07
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-02 22:05:44
+ * @LastEditTime: 2022-05-02 22:41:24
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import json from '@rollup/plugin-json'
@@ -14,6 +14,7 @@ import typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { preserveShebangs } from 'rollup-plugin-preserve-shebangs'
 import alias from '@rollup/plugin-alias'
+import copy from 'rollup-plugin-copy'
 import commonjs from 'rollup-plugin-commonjs'
 
 const extensions = ['.js', '.ts']
@@ -53,6 +54,11 @@ export default {
     json(),
     // 代码压缩
     terser(),
-    commonjs()
+    commonjs(),
+    copy({
+      targets: [
+        { src: 'src/templates/', dest: 'dist/' }
+      ]
+    })
   ]
 }
