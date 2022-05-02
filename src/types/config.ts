@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 22:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-29 21:28:31
+ * @LastEditTime: 2022-05-02 16:52:36
  */
 // 项目映射
 export interface IProjectMapping {
@@ -24,8 +24,6 @@ export interface IProjectMapping {
     originUrl: string,
     // 输出目录
     outDir: string,
-    // 请求声明模块
-    fetchModule: string,
     // 项目跟请求方法映射
     projectMapping: { [key: number]: IProjectMapping },
     // 忽略ts校验

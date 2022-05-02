@@ -4,7 +4,7 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-01 21:30:11
+ * @LastEditTime: 2022-05-02 16:55:44
  */
 import path from 'path'
 import fs from 'fs'
@@ -21,7 +21,7 @@ let configRootPath = process.cwd()
  * @date
  */
 function configPath () {
-  return path.resolve(configRootPath, '/yct.config.js')
+  return path.resolve(configRootPath, './yct.config.js')
 }
 
 /**
@@ -31,9 +31,9 @@ function configPath () {
  * @export
  * @return {*}
  */
-export function getConfig (): IConfig {
+export function getConfig(): IConfig {
   if (!existConfig()) {
-    throw new Error('ygt.config.js 配置文件不存在')
+    throw new Error('yct.config.js 配置文件不存在')
   }
   if (require.cache[configPath()]) {
     delete require.cache[configPath()]
@@ -48,9 +48,6 @@ export function getConfig (): IConfig {
   if (!config.outDir) {
     throw new Error('请配置Yapi文件生成输出目录')
   }
-//   if (!config.fetchModule) {
-//     throw new Error('请配置Yapi请求声明模块')
-//   }
   if (!config.projectMapping) {
     throw new Error('请配置Yapi项目映射')
   }
@@ -73,6 +70,8 @@ export const existConfig = (): boolean => {
  * @date
  */
 export const initConfig = async (): Promise<void> => {
+  console.log('55550121212');
+  
   if (existConfig()) {
     const res = await inquirer.prompt({
       type: 'confirm',
@@ -95,6 +94,6 @@ export const initConfig = async (): Promise<void> => {
  * @date
  */
 export const generateDefaultConfig = (): void => {
-  const originPath = path.resolve(__dirname, '../templates/configTemplate/ygt.config.js')
+  const originPath = path.resolve(__dirname, '../templates/configTemplate/yct.config.js')
   fs.copyFileSync(originPath, configPath())
 }

@@ -2,9 +2,10 @@
   "name": "yct",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/core/.js",
+  "main": "dist/core/index.js",
   "scripts": {
     "dev": "ts-node --files -r tsconfig-paths/register ./src/index.ts -g",
+    "server": "ts-node --files -r tsconfig-paths/register ./src/start.ts",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

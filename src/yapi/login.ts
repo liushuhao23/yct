@@ -4,10 +4,10 @@
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:41:45
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-01 00:34:57
+ * @LastEditTime: 2022-05-02 16:49:28
  */
 import { list } from "./api/index"
-import { http, setCookie } from '../utils/http'
+import { http, setCookie, initAxios } from '../utils/http'
 import { getConfig } from '../utils/config'
 import { clg } from '../utils/console'
 
@@ -19,6 +19,7 @@ import { clg } from '../utils/console'
  */
 const login = (): Promise<void> => {
     const config = getConfig()
+    initAxios()
     return new Promise((resolve, reject) => {
         // 登录
         clg('yellow', '> yapi登录中...')
