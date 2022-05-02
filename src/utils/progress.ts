@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-04-30 23:46:44
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-01 00:50:50
+ * @LastEditTime: 2022-05-02 22:10:51
  */
 // 这里用到一个很实用的 npm 模块，用在同一行打印文本
 import { stdout } from 'single-line-log'
@@ -32,7 +32,8 @@ function formatCmdText (data: IProgress) {
     empty += '-'
   }
   // 拼接最终文本
-  return `\x1B[33m${data.title}\x1B[0m: [${cell}${empty}] ${data.curr}/${data.total} ${(100 * percent).toFixed(2)}%\n`
+  return `\x1B[33m${data.title}\x1B[0m: [${cell}${empty}] ${data.curr}/${data.total
+    } ${(100 * percent).toFixed(2)}%\n`
 }
 
 export class Progress {
@@ -51,16 +52,16 @@ export class Progress {
   }
 
   push (curr: number): void {
-    const task = taskList.find(e => e.title === this.title)
+    const task = taskList.find((e) => e.title === this.title)
     if (!task) return
     task.curr = curr
-    const cmdText = taskList.map(e => formatCmdText(e)).join('')
+    const cmdText = taskList.map((e) => formatCmdText(e)).join('')
     // 在单行输出文本
     stdout(cmdText)
   }
 
   clear (): void {
-    taskList = taskList.filter(e => e.title !== this.title)
+    taskList = taskList.filter((e) => e.title !== this.title)
     // stdout('')
   }
 }

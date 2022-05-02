@@ -15,7 +15,7 @@ program.on('option:init', () => {
 })
 
 program.on('option:generate', () => {
-    init()
+  init()
 })
 
 program.parse(process.argv)

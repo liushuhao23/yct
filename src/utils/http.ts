@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-04-25 22:43:03
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-02 16:53:17
+ * @LastEditTime: 2022-05-02 22:10:09
  */
 import axios from 'axios'
 import { getConfig } from './config'
@@ -20,7 +20,7 @@ export function initAxios (): void {
   axios.defaults.baseURL = config.originUrl
 }
 
-/**  
+/**
  * @description 设置cookie
  * @author liushuhao
  * @date

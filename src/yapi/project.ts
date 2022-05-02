@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-04-25 23:59:58
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-04-26 23:46:06
+ * @LastEditTime: 2022-05-02 22:08:29
  */
 import { http } from '../utils/http'
 import inquirer, { QuestionCollection } from 'inquirer'
@@ -15,7 +15,7 @@ import { getConfig } from '../utils/config'
 /**
  * @description 获取项目列表
  * @author liushuhao
- * @date 
+ * @date
  * @export
  * @param groupId: number
  * @return {*}

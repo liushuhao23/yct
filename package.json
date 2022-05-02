@@ -1,7 +1,7 @@
 {
   "name": "yct",
   "version": "1.0.0",
-  "description": "",
+  "description": "yapi 接口转化成ts 类型文件",
   "main": "dist/core/index.js",
   "scripts": {
     "dev": "ts-node --files -r tsconfig-paths/register ./src/index.ts -g",
@@ -12,7 +12,7 @@
   "bin": {
     "yct": "dist/core/index.js"
   },
-  "author": "",
+  "author": "liushuhao",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1", 

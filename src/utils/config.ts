@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-04-25 19:49:20
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-02 16:55:44
+ * @LastEditTime: 2022-05-02 22:09:52
  */
 import path from 'path'
 import fs from 'fs'
@@ -12,8 +12,7 @@ import inquirer from 'inquirer'
 import { IConfig } from '../types/config'
 import { clg } from './console'
 
-let configRootPath = process.cwd()
-
+const configRootPath = process.cwd()
 
 /**
  * @description 获取配置文件路径
@@ -31,7 +30,7 @@ function configPath () {
  * @export
  * @return {*}
  */
-export function getConfig(): IConfig {
+export function getConfig (): IConfig {
   if (!existConfig()) {
     throw new Error('yct.config.js 配置文件不存在')
   }
@@ -70,8 +69,6 @@ export const existConfig = (): boolean => {
  * @date
  */
 export const initConfig = async (): Promise<void> => {
-  console.log('55550121212');
-  
   if (existConfig()) {
     const res = await inquirer.prompt({
       type: 'confirm',

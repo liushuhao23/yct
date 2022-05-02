@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-05-01 16:00:07
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-02 13:48:57
+ * @LastEditTime: 2022-05-02 22:05:44
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import json from '@rollup/plugin-json'
@@ -15,7 +15,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { preserveShebangs } from 'rollup-plugin-preserve-shebangs'
 import alias from '@rollup/plugin-alias'
 import commonjs from 'rollup-plugin-commonjs'
-import copy from 'rollup-plugin-copy'
 
 const extensions = ['.js', '.ts']
 
@@ -34,9 +33,7 @@ export default {
     preserveShebangs(),
     // 处理别名
     alias({
-      entries: [
-        { find: '@', replacement: '../src' }
-      ]
+      entries: [{ find: '@', replacement: '../src' }]
     }),
     // 解析typescript
     typescript({

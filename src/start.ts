@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: liushuhao
  * @Date: 2022-04-25 17:03:47
  * @LastEditors: liushuhao
- * @LastEditTime: 2022-05-02 17:26:42
+ * @LastEditTime: 2022-05-02 22:05:09
  */
 import { login } from './yapi/login'
 import { getGroupId } from './yapi/group'
@@ -16,7 +16,7 @@ import { existConfig, generateDefaultConfig } from './utils/config'
 import { clg } from './utils/console'
 import inquirer from 'inquirer'
 
-async function init () {
+async function init (): Promise<void> {
   if (!existConfig()) {
     const res = await inquirer.prompt({
       type: 'confirm',
@@ -44,6 +44,5 @@ async function init () {
     checkedInterfaceList = await getCatList(modulars[0].modularId)
   }
   tempJsonSchema(checkedInterfaceList, projectName)
-  return false
 }
 export { init }
